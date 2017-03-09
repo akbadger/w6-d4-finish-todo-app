@@ -1,3 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+img {
+    width: 100%;
+}
+
+body {
+    background-color: #f1f1f1;
+}
+
 title {
     letter-spacing: 2px;
 }
@@ -42,6 +53,10 @@ label {
     letter-spacing: 1.2px;
 }
 
-.list-group-item>.badge {
-    font-weight: 300;
+#personal {
+    background-color: lightpink;
+}
+
+#work {
+        background-color: lightblue;
 }
