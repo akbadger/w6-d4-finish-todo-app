@@ -1,0 +1,47 @@
+title {
+    letter-spacing: 2px;
+}
+
+.title {
+    margin-top: 20px;
+    letter-spacing: 6px;
+    font-size: 20px;
+    padding: 25px;
+    border: 1px solid lightgray;
+}
+
+hr {
+    padding-bottom: 1px;
+    border: 0;
+    border-top: 1px solid black;
+}
+
+main {
+    margin-right: 20px;
+}
+
+.list-group {
+    padding-top: 10px;
+}
+
+.list-group-item {
+    letter-spacing: 1.5px;
+}
+
+.ellipse {
+    letter-spacing: 5px;
+    padding-bottom: 10px;
+}
+
+.notes-paragraph {
+     letter-spacing: 1.5px;
+}
+
+label {
+    font-weight: normal;
+    letter-spacing: 1.2px;
+}
+
+.list-group-item>.badge {
+    font-weight: 300;
+}
