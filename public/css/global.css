@@ -19,6 +19,7 @@ title {
     font-size: 20px;
     padding: 25px;
     border: 1px solid lightgray;
+    background: white;
 }
 
 hr {
@@ -60,3 +61,43 @@ label {
 #work {
         background-color: lightblue;
 }
+.label-default {
+    background: none;
+    color: gray;
+    border: 1px solid gray;
+}
+
+.label {
+    font-weight: 400;
+}
+
+.sand {
+    background: #7F7E6E;
+    color: white;
+    font-weight: 300;
+}
+
+.turquoise {
+    background: #43AA8B;
+    color: white;
+    font-weight: 300;
+}
+
+.blue {
+    background: #2E5266;
+    color: white;
+    font-weight: 300;
+}
+
+.salmon {
+    background: #EB5160;
+    color: white;
+    font-weight: 300;
+}
+
+.green {
+    background: #254441;
+    color: white;
+    font-weight: 300;
+}
+

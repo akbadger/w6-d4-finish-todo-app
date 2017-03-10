@@ -30,6 +30,16 @@ module.exports.setup = (router, uploads, knex) => {
 
     })
 
+    router.get('/todos/:todoId/complete', function (request, response) {
+        var update = {
+            completed: 'yes',
+            incomplete: 'no'
+        }
+        
+        knex.update(update).table('todos').where('id', '=', request.params.todoId).then(function(data) {
+            response.json(true)
+        })
+    })
 
     // Return the router, with new routes attached back to the Express web serer that's loading these
     return router

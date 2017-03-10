@@ -105,7 +105,7 @@ function showTodos(todo) {
                 <input type="checkbox" data-id="${todo.id}"/>
                 ${todo.todo} 
                 <span class="label label-default" id="categoryColor">${todo.category}</span>
-                <span class="label label-default">${moment(todo.due_date).format('MM/DD/YYYY')}</span>
+                <span class="label label-default label-date">${moment(todo.due_date).format('MM/DD/YYYY')}</span>
             </label>
         </div>
     
@@ -115,26 +115,26 @@ function showTodos(todo) {
 
     if (document.querySelector('#categoryColor').innerText === 'Personal') {
         document.querySelector('#categoryColor').classList.remove('label-default')
-        document.querySelector('#categoryColor').classList.add('label-danger')
+        document.querySelector('#categoryColor').classList.add('green')
     }
 
     else if (document.querySelector('#categoryColor').innerText === 'Work') {
         document.querySelector('#categoryColor').classList.remove('label-default')
-        document.querySelector('#categoryColor').classList.add('label-warning')
+        document.querySelector('#categoryColor').classList.add('salmon')
     }
 
     else if (document.querySelector('#categoryColor').innerText === 'Projects') {
         document.querySelector('#categoryColor').classList.remove('label-default')
-        document.querySelector('#categoryColor').classList.add('label-primary')
+        document.querySelector('#categoryColor').classList.add('blue')
     }
 
     else if (document.querySelector('#categoryColor').innerText === 'Bills') {
         document.querySelector('#categoryColor').classList.remove('label-default')
-        document.querySelector('#categoryColor').classList.add('label-success')
+        document.querySelector('#categoryColor').classList.add('turquoise')
     }
 
     else if (document.querySelector('#categoryColor').innerText === 'Chores') {
         document.querySelector('#categoryColor').classList.remove('label-default')
-        document.querySelector('#categoryColor').classList.add('label-info')
+        document.querySelector('#categoryColor').classList.add('sand')
     }
 }
