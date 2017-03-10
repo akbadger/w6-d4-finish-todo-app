@@ -25,7 +25,7 @@ function handleKeyPressOnTodoItem(e) {
 }
 
 function handleClickOnCheckbox(e) {
-    if (e.target.checkbox === 'checkbox') {
+    if (e.target.type === 'checkbox') {
         toggleTodoComplete(e.target.getAttribute('data-id'), e.target.checked)
     }
 }
@@ -34,10 +34,12 @@ function toggleTodoComplete(todoId, isComplete) {
 
     if (isComplete) {
         fetch('/api/v1/todos/' + todoId + '/complete')
+        .then(getTodos)
     }
     
     else {
         fetch('/api/v1/todos/' + todoId + '/incomplete')
+        .then(getTodos)
     }
 
 }
@@ -71,8 +73,7 @@ function addTodo() {
             body: JSON.stringify(body)
         })
         .then(response => response.json())
-        .then(showTodos)
-            // .then(getTodos)
+        .then(getTodos)
 
 
         
@@ -90,21 +91,43 @@ function getTodos() {
 }
 
 function loopTodos(todos) {
+    document.querySelector('#todos').innerHTML = ''
     todos.forEach(function(todo) {
         showTodos(todo)
     })
 }
 
 function showTodos(todo) {
-    var categoryColor = document.querySelector('#categoryColor')
+    var labelCategory
+
+    switch(todo.category) {
+        case 'Work':
+            labelCategory = 'green'
+            break
+        case 'Personal':
+            labelCategory = 'salmon'
+            break
+        case 'Chores':
+            labelCategory = 'blue'
+            break
+        case 'Bills':
+            labelCategory = 'turquoise'
+            break
+        case 'Projects':
+            labelCategory = 'sand'
+            break
+        default: 
+            labelCategory = 'label-default'
+
+    }
     var todoList = 
-    `
-    <li class="list-group-item"> 
+    
+    `<li class="list-group-item"> 
         <div class="checkbox">
             <label>
-                <input type="checkbox" data-id="${todo.id}"/>
-                ${todo.todo} 
-                <span class="label label-default" id="categoryColor">${todo.category}</span>
+                <input type="checkbox" data-id="${todo.id}" ${todo.completed === 'yes' ? 'checked' : ''}/>
+                <span class="${todo.completed === 'yes' ? "done" : ''}">${todo.todo} </span>
+                <span class="label ${labelCategory}">${todo.category}</span>
                 <span class="label label-default label-date">${moment(todo.due_date).format('MM/DD/YYYY')}</span>
             </label>
         </div>
@@ -113,28 +136,4 @@ function showTodos(todo) {
 
     todosContainer.innerHTML = todoList + todosContainer.innerHTML;
 
-    if (document.querySelector('#categoryColor').innerText === 'Personal') {
-        document.querySelector('#categoryColor').classList.remove('label-default')
-        document.querySelector('#categoryColor').classList.add('green')
-    }
-
-    else if (document.querySelector('#categoryColor').innerText === 'Work') {
-        document.querySelector('#categoryColor').classList.remove('label-default')
-        document.querySelector('#categoryColor').classList.add('salmon')
-    }
-
-    else if (document.querySelector('#categoryColor').innerText === 'Projects') {
-        document.querySelector('#categoryColor').classList.remove('label-default')
-        document.querySelector('#categoryColor').classList.add('blue')
-    }
-
-    else if (document.querySelector('#categoryColor').innerText === 'Bills') {
-        document.querySelector('#categoryColor').classList.remove('label-default')
-        document.querySelector('#categoryColor').classList.add('turquoise')
-    }
-
-    else if (document.querySelector('#categoryColor').innerText === 'Chores') {
-        document.querySelector('#categoryColor').classList.remove('label-default')
-        document.querySelector('#categoryColor').classList.add('sand')
-    }
 }
